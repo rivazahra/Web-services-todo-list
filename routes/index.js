@@ -4,6 +4,7 @@ const authRoutes = require('./auth_route')
 const userRoute = require('./userRoute');
 const verifyToken = require('../middleware/auth');
 const todoRoutes = require("./todo_route")
+
 route.get('/',(req,res)=>{
     res.json("selamat datang di express sequelieze migration")
 })
