@@ -3,7 +3,9 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(models) {
+    static associate(models) {      
+      
+      User.hasMany(models.Todo, { foreignKey: 'user_id' });
     }
   }
   User.init(
@@ -21,28 +23,3 @@ module.exports = (sequelize, DataTypes) => {
     return User;
     
   };
-  
-  // "use strict";
-  // const { Sequelize, Model, DataTypes } = require("sequelize");
-  // const sequelize = require("../config/config");
-  
-  // class User extends Model {
-  //  static associate(models) {
-  //    // define association here
-  //  }
-  // }
-  
-  // User.init(
-  //  {
-  //    name: DataTypes.STRING,
-  //    email: DataTypes.STRING,
-  //    password: DataTypes.STRING
-  //  },
-  //  {
-  //    sequelize,
-  //    modelName: "User",
-  //  }
-  // );
-  
-  // module.exports = User;
-  

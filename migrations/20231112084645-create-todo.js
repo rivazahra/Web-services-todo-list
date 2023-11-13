@@ -10,7 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users', // Nama tabel referensi
+          key: 'id',      // Kolom yang diacu
+        },
+        allowNull: true,
       },
       title: {
         type: Sequelize.STRING

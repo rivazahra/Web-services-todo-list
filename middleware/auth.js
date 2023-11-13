@@ -4,7 +4,6 @@ const key = "ryryryryry";
 
 const verifyToken = (req, res, next) => {
     const header = req.headers.authorization;
-
     if (!header) {
         return res.status(401).json({
             status: 401,
@@ -25,6 +24,7 @@ const verifyToken = (req, res, next) => {
     try {
         const payload = jwt.verify(token,process.env.SECRET || key);
         req.payload = payload;
+        req.user = user; 
         console.log('Payload Token:', req.payload);
         next();
     } catch (error) {

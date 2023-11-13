@@ -1,10 +1,8 @@
-const express = require('express');
+const express = require("express");
+const { getUserByToken } = require("../controllers/user.controller");
+
 const route = express.Router();
-const {getAllUser} = require('../controllers/user.controller');
-const { User } = require("../models");
 
-route.get("/",getAllUser);
-// route.get("/")
-// route.get("/")
+route.get("/", getUserByToken);
 
-module.exports=route
+module.exports = route;
