@@ -1,5 +1,5 @@
 module.exports = {
-  development: {
+  production: {
     username: "root",
     password: "Ririzahra88",
     database: "webservice_sequelize",
@@ -13,11 +13,11 @@ module.exports = {
     host: "127.0.0.1",
     dialect: "mysql",
   },
-  production: {
-    username: "root",
-    password: null,
-    database: "database_production",
-    host: "127.0.0.1",
+ development: {
+    username: "sql12661617",
+    password: "sY8eILFUIZ",
+    database: "sql12661617",
+    host: "sql12.freemysqlhosting.net",
     dialect: "mysql",
   },
 };

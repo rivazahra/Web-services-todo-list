@@ -1,5 +1,4 @@
 const { Todo } = require("../models");
-
 module.exports = {
   getAllTodo: async (req, res) => {
     const { id } = req.payload;
@@ -69,41 +68,47 @@ module.exports = {
 },
  
 
-  updateTodo: async (req, res) => {
+updateTodo: async (req, res) => {
     const { id } = req.payload;
     const { title, is_compeleted } = req.body;
     try {
-      const data = await Todo.findOne({
-        where: {
-          id: req.params.id,
-          user_id: id,
-        },
-      });
-
-      if (!data) {
-        return res.status(400).json({
-          status: 400,
-          message: "Todo not found",
+        const data = await Todo.findOne({
+            where: {
+                id: req.params.id,
+                user_id: id,
+            },
         });
-      }
-      await Todo.update(data, {
-        where: {
-          id: req.params.id,
-          user_id: id,
-          title,
-          is_compeleted,
-        },
-      });
-      res.status(201).json({
-        message: "Success update todo",
-      });
+
+        if (!data) {
+            return res.status(400).json({
+                status: 400,
+                message: "Todo not found",
+            });
+        }
+
+        // Update hanya kolom yang diperlukan
+        await Todo.update({
+            title: title,
+            is_compeleted: is_compeleted,
+        }, {
+            where: {
+                id: req.params.id,
+                user_id: id,
+            },
+        });
+
+        res.status(201).json({
+            message: "Success update todo",
+        });
     } catch (error) {
-      res.status(500).json({
-        message: "Fail update todo",
-      });
+        res.status(500).json({
+            message: "Fail update todo",
+        });
     }
-  },
+},
+
   deleteTodo: async (req, res) => {
+    const { id } = req.payload;
     try {
       const data = await Todo.findOne({
         where: {

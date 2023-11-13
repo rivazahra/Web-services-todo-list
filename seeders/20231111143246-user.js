@@ -10,19 +10,15 @@ module.exports = {
                 email: "riri@gmail.com",
                 password: bcrypt.hashSync("123", 10),
             },
-            {
-                name: "ica",
-                email: "ica@gmail.com",
-                password: bcrypt.hashSync("123", 10),
-            },
+           
             {
                 name: "anggi",
                 email: "anggi@gmail.com",
                 password: bcrypt.hashSync("123", 10),
             },
             {
-                name: "anggi",
-                email: "anggwi@gmail.com",
+                name: "dika",
+                email: "dika@gmail.com",
                 password: bcrypt.hashSync("123", 10),
             },
         ]);

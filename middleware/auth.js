@@ -24,7 +24,7 @@ const verifyToken = (req, res, next) => {
     try {
         const payload = jwt.verify(token,process.env.SECRET || key);
         req.payload = payload;
-        req.user = user; 
+        // req.user = user; 
         console.log('Payload Token:', req.payload);
         next();
     } catch (error) {
